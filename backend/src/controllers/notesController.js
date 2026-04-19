@@ -1,10 +1,28 @@
-// through const 
-export const controlOfGet = (req, res) => {
-    res.status(200).send("get hit");
+import Note from "../models/notes.js";
+
+export async function controlOfGet(req, res) {
+    try {
+        const notes = await Note.find();
+        res.status(200).json(notes);
+    } catch (error) {
+        console.error("Error fetching notes ", error);
+        res.status(500).json({ message: "Failed to fetch notes" });
+    }
 }
+
+
+// through const 
+
  // or through function
-export function controlOfPOst(req, res) {
-    res.status(201).json({ message : "post hit"})
+export async function controlOfPOst(req, res) {
+    try {
+        const createNote = new Note(req.body);
+        await createNote.save();
+        res.status(201).json({message: "note created \n"}, createNote);
+    } catch (error) {
+        console.error("Error creating note ", error);
+        res.status(500).json({ message: "Failed to create note" }); 
+    }
 }
 
 export const controlOfPut = (req, res) => {

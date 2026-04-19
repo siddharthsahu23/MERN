@@ -7,11 +7,14 @@ dotenv.config();
 
 const app = express();
 connectDB();
+app.use(express.json()); //middleware to parse json body
+
 app.use("/api/notes", notesRoutes);
 //app.use("/api/payments", notesPayments);
 //app.use("/api/posts", notesPosts);
 //app.use("/api/Products", notesProducts);
 const PORT = process.env.PORT || 5009;
+
 app.listen(PORT, () => {
     console.log("server started");
 });

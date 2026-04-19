@@ -1,5 +1,5 @@
 import express from "express";
-import {controlOfDel, controlOfGet, controlOfPOst, controlOfPut} from "../controllers/notesController.js"
+import {controlOfGet, controlOfDel,  controlOfPOst, controlOfPut} from "../controllers/notesController.js"
 const router = express.Router();
 
 router.get("/", controlOfGet);
