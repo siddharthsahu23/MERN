@@ -11,8 +11,8 @@ app.use("/api/notes", notesRoutes);
 //app.use("/api/payments", notesPayments);
 //app.use("/api/posts", notesPosts);
 //app.use("/api/Products", notesProducts);
-
-app.listen(5009, () => {
+const PORT = process.env.PORT || 5009;
+app.listen(PORT, () => {
     console.log("server started");
 });
 
